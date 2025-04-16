@@ -1,7 +1,7 @@
 "use client";
 
 import { useThemeContext } from "@/_contexts/theme-provider";
-import { Lightbulb, LightbulbOff } from "lucide-react";
+import { LampDesk, LightbulbOff } from "lucide-react";
 import { motion } from "framer-motion";
 import "@/_styles/theme-button.css";
 
@@ -10,19 +10,23 @@ export default function ThemeButton() {
   const isDark = theme === "dark";
 
   return (
-    <motion.button
+    <button
       onClick={toggleTheme}
       aria-label="Toggle Theme"
-      className="theme-button"
-    >{
-      isDark ? <Lightbulb className="" size={20} /> : <LightbulbOff className="" size={20} />
-    }
+      className="theme-button-container"
+    >
       <motion.div
         layout
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
-        className="thumb"
+        className="theme-thumb"
         animate={{ x: isDark ? 26 : 0 }}
-      />
-    </motion.button>
+      >
+        {isDark ? (
+          <LampDesk className="icon" size={16} />
+        ) : (
+          <LightbulbOff className="icon" size={16} />
+        )}
+      </motion.div>
+    </button>
   );
 }

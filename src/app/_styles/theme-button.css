@@ -1,15 +1,18 @@
 .theme-button {
   position: relative;
-  width: 72px;
-  height: 36px;
-  border-radius: 9999px; /* pill shape */
+  width: 6rem;
+  height: 2.5rem;
+  border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4px;
+  padding: 0.05rem 0.75rem;
   transition: background-color 0.3s ease;
   cursor: pointer;
   overflow: visible;
+  color: var(--text);
+  background-color: var(--background);
+  border: solid 1px var(--background);
 }
 
 .theme-button .lucide {
@@ -26,12 +29,30 @@
 
 .theme-button .thumb {
   position: absolute;
-  top: 4px;
-  left: 4px;
-  height: 28px;
-  width: 28px;
+  top: 0.25rem;
+  left: 0.25rem;
+  height: 2rem;
+  width: 2rem;
   border-radius: 9999px;
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  color: var(--background);
+  background-color: var(--text);
+  box-shadow: 0 2px 6px var(--background);
   z-index: 5;
+}
+
+.thumb {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.thumb.transparent {
+  background-color: transparent;
+  border: 2px solid var(--text);
+}
+
+.thumb.filled {
+  background-color: var(--text);
+  border: 2px solid var(--text);
 }
