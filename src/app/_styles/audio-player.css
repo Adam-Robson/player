@@ -1,0 +1,52 @@
+.audio-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  border: white 1px solid;
+  width: 100%;
+}
+
+.toggle-x {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.now-playing {
+  flex: 1;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+}
+
+.playback {
+  border: solid red 1px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.label {
+  opacity: 0;
+}
+
+.control:hover .label {
+  opacity: 1;
+
+}
