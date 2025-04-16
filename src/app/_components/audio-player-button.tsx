@@ -35,7 +35,7 @@ export default function AudioPlayerButton() {
                 transition: { duration: 0.8, ease: [0.86, 0, 0.07, 1] }
               }
             }}
-            style={{ transformOrigin: "bottom center" }}
+            style={{ transformOrigin: 'center bottom' }}
             className="player-panel"
           >
             <AudioPlayer />

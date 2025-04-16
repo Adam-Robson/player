@@ -1,9 +1,19 @@
 .audio-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 340px;
+  margin: 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: space-between;
   flex: 1;
-  width: 100%;
+  color: var(--background);
+  background-color: var(--secondary);
+  border: var(--background) solid 4px;
 }
 
 .playlist {
@@ -14,10 +24,12 @@
   align-items: flex-start;
   line-height: 2;
   position: relative;
+  margin: 2rem 0 0 0;
 }
 
 .now-playing {
   flex: 1;
+  width: 100%;
 }
 
 .controls {
@@ -39,8 +51,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  width: 4rem;
+  height: 4rem;
 }
 
 .label {
@@ -50,4 +64,9 @@
 .control:hover .label {
   opacity: 1;
 
+}
+
+.volume-container {
+  width: 100%;
+  padding: 0 4rem;
 }

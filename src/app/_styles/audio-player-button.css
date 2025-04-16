@@ -4,37 +4,21 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 50;
-  color: var(--black);
-  -webkit-box-shadow: 1px 1px 30px -6px rgba(51,49,51,0.31);
-  -moz-box-shadow: 1px 1px 30px -6px rgba(51,49,51,0.31);
+  color: var(--text);
   box-shadow: 1px 1px 30px -6px rgba(51,49,51,0.31);
   cursor: pointer;
 }
 
 .player-panel {
-  border: greenyellow;
-  position: absolute;
-  bottom: 3.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  backdrop-filter: blur(4px);
-  width: 18rem;
-  height: 28rem;
-  background-color: var(--secondary);
+  background-color: transparent;
   overflow: hidden;
-  border-radius: 8px;
-  -webkit-box-shadow: 7px 6px 33px -12px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 6px 33px -12px rgba(0,0,0,0.75);
-  box-shadow: 7px 6px 33px -12px rgba(0,0,0,0.75);
-  padding: 1rem;
-}
-
-.toggle-x {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  z-index: 60;
 }

@@ -1,13 +1,22 @@
 import { Play, Pause, MoveLeft, MoveRight } from "lucide-react";
 import { useAudioContext } from '@/_contexts/audio-provider';
+import '@/_styles/controls.css';
 
 
 export default function Controls() {
-  const { volume, playback, handlePlayback, handlePreviousSong, handleNextSong, volumeSliderRef, handleVolumeChange } = useAudioContext();
+  const { 
+    volume, 
+    playback, 
+    handlePlayback, 
+    handlePreviousSong, 
+    handleNextSong,
+    volumeSliderRef, 
+    handleVolumeChange 
+  } = useAudioContext();
 
   return (
-    <section className="controls">
-      <div className="playback">
+    <section className="w-full h-1/4">
+      <div className="playback w-full flex justify-center items-center">
       <button 
         onClick={handlePreviousSong}
         className="control cursor-pointer"
@@ -32,10 +41,10 @@ export default function Controls() {
         <label className="label">Next</label>
       </button>
       </div>
-      <button className="control">
+      <button className="volume-container">
         <input 
           id="volume"
-          className="volume"
+          className="control cursor-pointer"
           ref={volumeSliderRef}
           type="range"
           min="0"
@@ -44,6 +53,7 @@ export default function Controls() {
           value={volume}
           onChange={handleVolumeChange}
         />
+        <label className="label">Volume</label>
       </button>
     </section>
   );
