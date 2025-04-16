@@ -2,16 +2,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   flex: 1;
-  border: white 1px solid;
   width: 100%;
 }
 
-.toggle-x {
+.playlist {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 2;
+  position: relative;
 }
 
 .now-playing {
@@ -26,7 +28,6 @@
 }
 
 .playback {
-  border: solid red 1px;
   width: 100%;
   flex: 1;
   display: flex;

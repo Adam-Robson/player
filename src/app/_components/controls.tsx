@@ -8,17 +8,26 @@ export default function Controls() {
   return (
     <section className="controls">
       <div className="playback">
-      <button onClick={handlePreviousSong} className="control">
+      <button 
+        onClick={handlePreviousSong}
+        className="control cursor-pointer"
+      >
         <MoveLeft size={32} />
         <label className="label">Previous</label>
       </button>
 
-      <button onClick={handlePlayback} className="control">
+      <button 
+        onClick={handlePlayback} 
+        className="control cursor-pointer"
+      >
         {playback ? <Pause size={32} /> : <Play size={32} />}
         <label className="label">{playback ? 'Pause' : 'Play'}</label>
       </button>
 
-      <button onClick={handleNextSong} className="control">
+      <button 
+        onClick={handleNextSong} 
+        className="control cursor-pointer"
+      >
         <MoveRight size={32} />
         <label className="label">Next</label>
       </button>

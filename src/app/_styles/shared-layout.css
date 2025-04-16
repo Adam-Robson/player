@@ -1,5 +1,4 @@
 .shared-layout {
-  border: solid 2px yellow;
   height: 100dvh;
   width: 100%;
   position: relative;
@@ -11,7 +10,6 @@
 
 .player {
   position: relative;
-  border: solid 2px orange;
   min-height: 100%;
   max-width: 30rem;
   margin: 0 auto;
@@ -19,7 +17,6 @@
 }
 
 .theme-button {
-  border: solid 2px greenyellow;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -27,8 +24,6 @@
   border: none;
   cursor: pointer;
   outline: none;
-  padding: 0.5rem;
-  border-radius: 50%;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 

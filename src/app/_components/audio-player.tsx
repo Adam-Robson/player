@@ -11,15 +11,13 @@ export default function AudioPlayer() {
 
   return (
     <div className="audio-player">
-      <div className="toggle-x">
-       <button onClick={togglePlayer}>
-          <X />
-        </button>
-      </div>
-      <section className="playlist">
+      <button className="absolute right-4" onClick={togglePlayer}>
+        <X />
+      </button>
+      <section className="playlist text-sm text-shadow-md text-pretty">
         <Playlist />
       </section>
-      <section className="now-playing">
+      <section className="flex-1 text-sm text-center">
       {playback && (
           <>
             <div className="song-title">{song.title}</div>

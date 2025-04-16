@@ -127,7 +127,8 @@ export function AudioProvider({
     [initializeHowl, playback, userInteracted]
   );
 
-  const handleVolumeChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVolumeChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(event.target.value);
     setVolume(newVolume);
     if (songRef.current) {
@@ -241,6 +242,9 @@ export function AudioProvider({
       currentIndex,
       playback,
       volume,
+      elapsed,
+      duration,
+      error,
       setVolume,
       handleVolumeChange,
       handlePlayback,
@@ -248,9 +252,6 @@ export function AudioProvider({
       handlePreviousSong,
       handleNextSong,
       handleVolume,
-      elapsed,
-      duration,
-      error,
       volumeSliderRef,
       togglePlayer,
       visible,
@@ -263,10 +264,14 @@ export function AudioProvider({
       elapsed,
       duration,
       error,
+      setVolume,
       handleVolumeChange,
+      handlePlayback,
       handleSongChange,
       handlePreviousSong,
       handleNextSong,
+      handleVolume,
+      volumeSliderRef,
       togglePlayer,
       visible,
     ]
