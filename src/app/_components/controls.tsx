@@ -1,4 +1,4 @@
-import { Play, Pause, MoveLeft, MoveRight } from "lucide-react";
+import { Play, Pause, CaretRight, CaretLeft } from "@phosphor-icons/react";
 import { useAudioContext } from '@/_contexts/audio-provider';
 import '@/_styles/controls.css';
 
@@ -21,7 +21,7 @@ export default function Controls() {
         onClick={handlePreviousSong}
         className="control cursor-pointer"
       >
-        <MoveLeft size={32} />
+        <CaretLeft />
         <label className="label">Previous</label>
       </button>
 
@@ -29,7 +29,7 @@ export default function Controls() {
         onClick={handlePlayback} 
         className="control cursor-pointer"
       >
-        {playback ? <Pause size={32} /> : <Play size={32} />}
+        {playback ? <Pause /> : <Play />}
         <label className="label">{playback ? 'Pause' : 'Play'}</label>
       </button>
 
@@ -37,7 +37,7 @@ export default function Controls() {
         onClick={handleNextSong} 
         className="control cursor-pointer"
       >
-        <MoveRight size={32} />
+        <CaretRight />
         <label className="label">Next</label>
       </button>
       </div>

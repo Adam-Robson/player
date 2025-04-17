@@ -18,7 +18,7 @@ export default function Playlist() {
             className="text-left font-normal hover:font-medium cursor-pointer my-1"
             onClick={() => handleSongChange && handleSongChange(index)}
           >
-            {track.title} ({track.album})
+            {track.title}
           </button>
         </li>
       ))}

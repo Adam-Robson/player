@@ -1,8 +1,8 @@
 "use client";
 
 import { useThemeContext } from "@/_contexts/theme-provider";
-import { LampDesk, LightbulbOff } from "lucide-react";
 import { motion } from "framer-motion";
+import { Sun, SunDim } from "@phosphor-icons/react";
 import "@/_styles/theme-button.css";
 
 export default function ThemeButton() {
@@ -22,9 +22,9 @@ export default function ThemeButton() {
         animate={{ x: isDark ? 26 : 0 }}
       >
         {isDark ? (
-          <LampDesk className="icon" size={16} />
+          <Sun className="icon" size={16} />
         ) : (
-          <LightbulbOff className="icon" size={16} />
+          <SunDim className="icon" size={16} />
         )}
       </motion.div>
     </button>

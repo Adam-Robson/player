@@ -2,7 +2,7 @@
 
 import { useAudioContext } from '@/_contexts/audio-provider';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PiRadioFill } from 'react-icons/pi';
+import { Radio } from '@phosphor-icons/react';
 import AudioPlayer from './audio-player';
 import "@/_styles/audio-player-button.css";
 
@@ -21,7 +21,7 @@ export default function AudioPlayerButton() {
           [@media(min-width:575px)]:transform 
           [@media(min-width:575px)]:-translate-x-1/2
         `}>
-        <PiRadioFill size={60} />
+        <Radio size={60} />
       </button>
 
       <AnimatePresence>
@@ -33,17 +33,22 @@ export default function AudioPlayerButton() {
             exit="closed"
             variants={{
               closed: {
+                clipPath: "inset(50% 0% 50% 0%)",
                 scaleY: 0,
                 opacity: 0,
                 transition:{ duration: 0.8, ease: [0.86, 0, 0.07, 1] }
               },
               open: {
+                clipPath: "inset(0% 0% 0% 0%)",
                 scaleY: 1,
                 opacity: 1,
                 transition: { duration: 0.8, ease: [0.86, 0, 0.07, 1] }
               }
             }}
-            style={{ transformOrigin: 'center bottom' }}
+            style={{
+              transformOrigin: "top center",
+              perspective: 1000,
+            }}
             className="player-panel"
           >
             <AudioPlayer />

@@ -33,17 +33,22 @@ export default function Navigation() {
         .map(({ name, path, icon: Icon }) => {
           const isActive = pathname === path;
 
-          const Text = <span className="py-4 text">{name}</span>;
+          const Text = <span className="py-4">{name}</span>;
           return (
             <div key={name} className="w-full mx-auto flex flex-col justify-between items-between">
               <Link
                 href={path}
-                className={`${baseClasses} group no-underline flex justify-between items-center`}
+                className={`${baseClasses} ${isActive ? 'font-normal' : 'font-light'} group no-underline flex justify-between items-center`}
               >
                 {Text}
                 <Icon
                   size={32}
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 text-zinc-400 dark:text-zinc-400 group-hover:text-red-300 dark:group-hover:text-purple-300"
+                  className={`
+                    ml-2 transition-color transition-opacity duration-500
+                    text-blue-950 dark:text-blue-100
+                    group-hover:text-red-200
+                    opacity-0 group-hover:opacity-100
+                  `}
                 />
               </Link>
             </div>
