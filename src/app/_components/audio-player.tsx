@@ -14,7 +14,7 @@ export default function AudioPlayer() {
       <div className="border-2 border-cyan-50 rounded-lg p-2">
 
       <button className="absolute right-5 top-5 cursor-pointer z-50" onClick={togglePlayer}>
-        <X />
+        <X size={20} />
       </button>
       <section className="playlist text-sm text-shadow-md">
         <Playlist />

@@ -17,6 +17,7 @@ export default function AudioPlayerButton() {
         className={`
           radio-icon
           fixed bottom-4 left-4 
+          hover:cursor-pointer
           [@media(min-width:575px)]:left-1/2 
           [@media(min-width:575px)]:transform 
           [@media(min-width:575px)]:-translate-x-1/2
@@ -46,7 +47,7 @@ export default function AudioPlayerButton() {
               }
             }}
             style={{
-              transformOrigin: "top center",
+              transformOrigin: "center bottom",
               perspective: 1000,
             }}
             className="player-panel"
@@ -58,5 +59,3 @@ export default function AudioPlayerButton() {
     </>
   );
 }
-
-
