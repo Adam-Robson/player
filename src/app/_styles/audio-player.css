@@ -13,6 +13,8 @@
   flex: 1;
   color: var(--background);
   background-color: var(--secondary);
+  backdrop-filter: blur(4px);
+  will-change: backdrop-filter, opacity;
 }
 
 .playlist {

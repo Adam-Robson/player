@@ -1,9 +1,0 @@
-.shared-layout {
-  height: 100dvh;
-  width: 100dvw;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}

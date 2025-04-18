@@ -17,7 +17,7 @@ export default function AudioPlayerButton() {
         className={`
           radio-icon
           fixed bottom-4 left-4 
-          hover:cursor-pointer
+          cursor-pointer
           [@media(min-width:575px)]:left-1/2 
           [@media(min-width:575px)]:transform 
           [@media(min-width:575px)]:-translate-x-1/2

@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.radio-icon:hover {
+  cursor: pointer;
+}
+
 .player-panel {
   position: fixed;
   top: 0;

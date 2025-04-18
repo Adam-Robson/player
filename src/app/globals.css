@@ -1,51 +1,36 @@
 @import "tailwindcss";
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --eerie: #262626ff;
-    --cobalt: #626b82ff;
-    --platinum: #e7e7e9ff;
-    --bone: #e0ffff88;  
-    --violet: #3f4358ff;
-    --taupe: #9a9aa2ff;
-    --alice: #edf5fcff;
+:root {
+  --eerie: #333333ff;
+  --cobalt: #545c6bff;
+  --alice: #edf5fcff;
+  --bone: #e0ffff88;  
+  --taupe: #847474ff;
 
-    --text: var(--eerie);
-    --background: var(--platinum);
-    --primary: var(--cobalt);
-    --secondary: var(--bone);
-    --accent: var(--violet);
-  }
+  --text: var(--eerie);
+  --background: var(--alice);
+  --primary: var(--cobalt);
+  --secondary: var(--bone);
+  --accent: var(--taupe);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --eerie: #262626ff;
-    --cobalt: #626b82ff;
-    --platinum: #e7e7e9ff;
-    --bone: #e0ffff88;   
-    --violet: #3f4358ff;
-    --taupe: #9a9aa2ff;
-    --alice: #edf5fcff;
-
-    --text: var(--alice);
-    --background: var(--eerie);
-    --primary: var(--cobalt);
-    --secondary: var(--bone);
-    --accent: var(--taupe);
-  }
+html[data-theme="dark"] {
+  --text: var(--alice);
+  --background: var(--eerie);
 }
 
 html,
 body {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: 'Fira Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   scroll-behavior: smooth;
   font-size: 1rem;
   line-height: 1.5;
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--background);
+  color: var(--text);
 }
 
 *,
