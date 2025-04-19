@@ -33,3 +33,15 @@ export type AudioProviderPropsType = {
   initialVolume?: number;
   initialIndex?: number;
 }
+
+
+export interface CollectionType {
+  id: number;
+  title: string;
+  cover: string;
+  releaseDate: string;
+  description: string;
+  tracks: SongType[];
+}
+
+

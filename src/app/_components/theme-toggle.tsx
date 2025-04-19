@@ -1,6 +1,7 @@
 'use client';
 
 import { useThemeProvider } from '@/_contexts/theme-provider';
+import {Sun, Sunglasses} from '@phosphor-icons/react';
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useThemeProvider();
@@ -9,9 +10,9 @@ export default function ThemeToggle() {
     <button
       aria-label="Toggle theme"
       onClick={toggleTheme}
-      className="text-sm p-2 rounded absolute top-8 right-6 z-50 cursor-pointer border border-blue-50"
+      className="text-sm p-2 rounded absolute top-8 right-6 z-50 cursor-pointer"
     >
-      {theme === 'light' ? 'view dark mode' : 'view light mode'}
+      {theme === 'light' ? <Sunglasses /> : <Sun />}
     </button>
   );
 }

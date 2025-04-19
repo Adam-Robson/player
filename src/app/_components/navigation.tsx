@@ -47,7 +47,8 @@ export default function Navigation() {
                   className={`
                     ml-2 transition-color transition-opacity duration-500
                     text-blue-950 dark:text-blue-50
-                    group-hover:text-red-200
+                    group-hover:text-cyan-800
+                    dark:group-hover:text-red-200
                     opacity-0 group-hover:opacity-100
                   `}
                 />
