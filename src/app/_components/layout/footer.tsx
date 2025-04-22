@@ -1,5 +1,4 @@
-import AudioPlayerButton from '@/_components/audio-player-button';
-
+import AudioPlayerButton from "@/_components/audio-player/audio-player-button";
 
 export default function Footer() {
   return (

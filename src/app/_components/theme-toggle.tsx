@@ -2,17 +2,32 @@
 
 import { useThemeProvider } from '@/_contexts/theme-provider';
 import {Sun, Sunglasses} from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useThemeProvider();
+  const isDark = theme === 'dark';
 
   return (
+
     <button
-      aria-label="Toggle theme"
       onClick={toggleTheme}
-      className="text-sm p-2 rounded absolute top-8 right-6 z-50 cursor-pointer"
+      aria-label="Toggle Theme"
+      className={`
+        absolute top-8 right-6
+        rounded focus:outline-none
+        focus:ring-2 focus:ring-offset-2
+        text-sm p-2 z-50 cursor-pointer
+      `}
     >
-      {theme === 'light' ? <Sunglasses /> : <Sun />}
+      <motion.div
+        initial={{ rotate: 0 }}
+        animate={{ rotate: isDark ? 180 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {isDark ? <Sun /> : <Sunglasses />}
+      </motion.div>
     </button>
   );
-}
+};
+

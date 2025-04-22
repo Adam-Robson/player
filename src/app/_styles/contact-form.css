@@ -1,0 +1,28 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-input {
+  border: 1px solid var(--text);
+  background-color: #dfdfdf;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  color: var(--text);
+}
+
+.form-button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  -webkit-box-shadow: 8px 8px 33px -10px rgba(66, 68, 74, 1);
+  -moz-box-shadow: 8px 8px 33px -10px rgba(66, 68, 74, 1);
+  box-shadow: 8px 8px 33px -10px rgba(66, 68, 74, 1);
+}

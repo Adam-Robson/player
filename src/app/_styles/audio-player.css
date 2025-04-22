@@ -11,10 +11,20 @@
   justify-content: center;
   align-items: space-between;
   flex: 1;
-  color: var(--background);
+  color: var(--foreground);
   background-color: var(--secondary);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2.5px);
   will-change: backdrop-filter, opacity;
+  z-index: 60;
+}
+
+@media screen and (min-width: 500px) {
+
+  .audio-player {
+    max-width: 480px;
+    padding: 3rem;
+  }
+
 }
 
 .playlist {

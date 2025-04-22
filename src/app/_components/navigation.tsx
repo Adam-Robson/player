@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { navLinks } from '@/_data/navlinks';
+import { navLinks } from "@/_data/navlinks";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -27,17 +27,22 @@ export default function Navigation() {
       `}
     >
       {navLinks
-        .filter(({ path }) => path !== "/" || pathname !== "/")
+        .filter((path) => path.path !== pathname)
         .map(({ name, path, icon: Icon }) => {
           const isActive = pathname === path;
 
-          const Text = <span className="py-4 text-base md:text-lg">{name}</span>;
+          const Text = (
+            <span className="py-4 text-base md:text-lg">{name}</span>
+          );
           return (
-            <div key={name} className="w-full mx-auto flex flex-col justify-between items-between">
+            <div
+              key={name}
+              className="w-full mx-auto flex flex-col justify-between items-between"
+            >
               <Link
                 href={path}
                 className={`
-                  ${baseClasses} ${isActive ? 'font-normal' : 'font-light'}
+                  ${baseClasses} ${isActive ? "font-normal" : "font-light"}
                   group no-underline flex justify-between items-center
                 `}
               >
@@ -47,15 +52,15 @@ export default function Navigation() {
                   className={`
                     ml-2 transition-color transition-opacity duration-500
                     text-blue-950 dark:text-blue-50
-                    group-hover:text-cyan-800
-                    dark:group-hover:text-red-200
+                    group-hover:text-red-200
+                    dark:group-hover:text-cyan-800
                     opacity-0 group-hover:opacity-100
                   `}
                 />
               </Link>
             </div>
-        );
-      })}
+          );
+        })}
     </motion.nav>
   );
 }
