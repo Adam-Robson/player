@@ -38,59 +38,66 @@ export default function ContactForm() {
   return (
     <div className="container max-w-xs flex flex-col justify-end">
       <form
-        action="/api/contact"
+        action="/form-handler.php"
         className="flex flex-col justify-center items-center max-w-md w-full mx-auto"
       >
         <span className="w-full flex justify-between items-center p-2">
           <label htmlFor="email" className="form-label">
-            email
+            Email
           </label>
           <input
             type="email"
             id="email"
             className="form-input email"
             onChange={handleChange}
+            placeholder="Enter your email"
+            required
           />
         </span>
 
         <span className="w-full flex justify-between items-center p-2">
           <label htmlFor="firstname" className="form-label">
-            first name
+            First Name
           </label>
           <input
             type="text"
             id="firstname"
             className="form-input firstname"
             onChange={handleChange}
+            placeholder="Enter you first name"
+            required
           />
         </span>
 
         <span className="w-full flex justify-between items-center p-2">
           <label htmlFor="lastname" className="form-label">
-            last name
+            Last Name
           </label>
           <input
             type="text"
             id="lastname"
             className="form-input lastname"
             onChange={handleChange}
+            placeholder="Enter your last name"
+            required
           />
         </span>
 
         <span className="w-full flex justify-between items-center p-2">
           <label htmlFor="message" className="form-label">
-            message
+            Message
           </label>
           <textarea
             name="message"
             id="message"
             className="form-input message"
             onChange={handleChange}
+            placeholder="Enter a custom message"
           />
         </span>
 
         <button className="submit" onSubmit={handleSubmit}>
-          submit
+          Submit
         </button>
       </form>
     </div>
