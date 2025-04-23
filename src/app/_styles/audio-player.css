@@ -1,21 +1,43 @@
 .audio-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 300px;
+  margin: 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  align-items: space-between;
   flex: 1;
-  border: white 1px solid;
-  width: 100%;
+  color: var(--text);
+  background-color: var(--secondary);
+  backdrop-filter: blur(4px);
+  will-change: backdrop-filter, opacity;
 }
 
-.toggle-x {
+@media screen and (min-width: 500px) {
+  .audio-player {
+    max-width: 400px;
+    padding: 3rem;
+  }
+}
+
+.playlist {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 2;
+  position: relative;
+  margin: 2rem 0 0 0;
 }
 
 .now-playing {
   flex: 1;
+  width: 100%;
 }
 
 .controls {
@@ -26,11 +48,10 @@
 }
 
 .playback {
-  border: solid red 1px;
   width: 100%;
   flex: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -38,8 +59,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  width: 4rem;
+  height: 4rem;
 }
 
 .label {
@@ -48,5 +71,9 @@
 
 .control:hover .label {
   opacity: 1;
+}
 
+.volume-container {
+  width: 100%;
+  padding: 0 4rem;
 }

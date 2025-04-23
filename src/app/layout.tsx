@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Fira_Sans, Fira_Code, Fira_Mono } from "next/font/google";
+import Providers from "@/_components/providers";
+import PageWrapper from "@/_components/page-wrapper";
 import "./globals.css";
 
 const firaSans = Fira_Sans({
@@ -25,7 +27,6 @@ export const metadata: Metadata = {
   description: "This is the website for a band, Le Fog.",
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,9 +35,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${firaSans.variable} ${firaCode.variable} ${firaMono.variable} subpixel-antialiased`}
+        className={`
+          ${firaSans.variable} 
+          ${firaCode.variable} 
+          ${firaMono.variable} 
+          subpixel-antialiased
+        `}
       >
-        {children}
+        <Providers>
+          <PageWrapper>{children}</PageWrapper>
+        </Providers>
       </body>
     </html>
   );

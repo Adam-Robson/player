@@ -39,7 +39,6 @@ export function AudioProvider({
   const [duration, setDuration] = useState<string>("00:00");
   const [visible, setVisible] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [userInteracted, setUserInteracted] = useState<boolean>(false);
 
   const songRef = useRef<Howl | null>(null);
   const volumeSliderRef = useRef<HTMLInputElement>(null);
@@ -113,38 +112,47 @@ export function AudioProvider({
           return;
         }
 
-        if (userInteracted) {
-          songRef.current = initializeHowl(selectedSong);
-          if (playback) {
-            songRef.current.play();
-          }
+        songRef.current = initializeHowl(selectedSong);
+        if (playback) {
+          songRef.current.play();
         }
       } catch (error) {
         setError(`Failed to change song: ${error}`);
         console.error("Song change error:", error);
       }
     },
-    [initializeHowl, playback, userInteracted]
+    [initializeHowl, playback]
   );
 
-  const handleVolumeChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(event.target.value);
-    setVolume(newVolume);
-    if (songRef.current) {
-      songRef.current.volume(newVolume);
-    }
-  }, []);
+  const handleVolumeChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newVolume = parseFloat(event.target.value);
+      setVolume(newVolume);
+      if (songRef.current) {
+        songRef.current.volume(newVolume);
+      }
+    },
+    []
+  );
 
   const handlePlayback = useCallback(async () => {
-    setUserInteracted(true);
+    // 1) If we don't yet have a Howl, initialize it now
+    if (!songRef.current) {
+      try {
+        songRef.current = initializeHowl(song.url);
+      } catch (e) {
+        console.error("Failed to init audio:", e);
+        return;
+      }
+    }
 
-    if (!songRef.current) return;
-
+    // 2) Resume audio context if needed
     try {
       if (Howler.ctx.state === "suspended") {
         await Howler.ctx.resume();
       }
 
+      // 3) Toggle play / pause
       if (songRef.current.playing()) {
         songRef.current.pause();
       } else {
@@ -154,7 +162,7 @@ export function AudioProvider({
       setError(`Playback error: ${error}`);
       console.error("Play/Pause error:", error);
     }
-  }, []);
+  }, [initializeHowl, song.url]);
 
   const handleNextSong = useCallback(() => {
     const nextIndex = currentIndex < playlist.length - 1 ? currentIndex + 1 : 0;
@@ -194,27 +202,6 @@ export function AudioProvider({
   }, [volume]);
 
   useEffect(() => {
-    if (!userInteracted || !playlist.length) return;
-
-    const selectedSong = playlist[currentIndex]?.url;
-    if (!selectedSong) {
-      setError("Invalid song URL");
-      return;
-    }
-
-    try {
-      songRef.current = initializeHowl(selectedSong);
-    } catch (error) {
-      setError(`Initialization error: ${error}`);
-    }
-
-    return () => {
-      songRef.current?.stop();
-      songRef.current?.unload();
-    };
-  }, [currentIndex, initializeHowl, userInteracted]);
-
-  useEffect(() => {
     const updateElapsed = () => {
       if (playback && songRef.current) {
         const currentSeconds = songRef.current.seek() as number;
@@ -241,6 +228,9 @@ export function AudioProvider({
       currentIndex,
       playback,
       volume,
+      elapsed,
+      duration,
+      error,
       setVolume,
       handleVolumeChange,
       handlePlayback,
@@ -248,9 +238,6 @@ export function AudioProvider({
       handlePreviousSong,
       handleNextSong,
       handleVolume,
-      elapsed,
-      duration,
-      error,
       volumeSliderRef,
       togglePlayer,
       visible,
@@ -263,16 +250,24 @@ export function AudioProvider({
       elapsed,
       duration,
       error,
+      setVolume,
       handleVolumeChange,
+      handlePlayback,
       handleSongChange,
       handlePreviousSong,
       handleNextSong,
+      handleVolume,
+      volumeSliderRef,
       togglePlayer,
       visible,
     ]
   );
 
-  return <AudioContext.Provider value={contextValue}>{children}</AudioContext.Provider>;
+  return (
+    <AudioContext.Provider value={contextValue}>
+      {children}
+    </AudioContext.Provider>
+  );
 }
 
 export const useAudioContext = () => {
