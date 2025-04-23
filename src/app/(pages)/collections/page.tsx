@@ -1,24 +1,27 @@
 "use client";
 
+import Link from "next/link";
 import Albums from "@/_components/albums";
 import { House } from "@phosphor-icons/react";
-import Link from "next/link";
 
 export default function CollectionsPage() {
   return (
     <main
       className={`
-      container h-screen
-      w-full max-w-screen-lg
-      mx-auto px-4 py-10
-      text-center
-    `}
+        relative max-w-screen-lg mx-auto
+        h-screen px-4 py-8 
+        w-full text-center container
+      `}
     >
-      <div className="relative max-w-screen-md mx-auto w-full h-screen">
-        <Link href="/" className="absolute top-4 left-4">
+      <div className="absolute top-4 left-4">
+        <Link href="/">
           <House />
         </Link>
-        <h1 className="text-2xl font-medium mb-6">Le Fog Collections</h1>
+      </div>
+      <div className="relative max-w-screen-md mx-auto w-full h-screen">
+        <h1 className="text-center text-2xl font-medium mb-6">
+          Le Fog Collections
+        </h1>
         <Albums />
       </div>
     </main>

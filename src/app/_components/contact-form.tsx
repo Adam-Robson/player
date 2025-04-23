@@ -36,7 +36,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="container">
+    <div className="container max-w-xs flex flex-col justify-end">
       <form
         action="/api/contact"
         className="flex flex-col justify-center items-center max-w-md w-full mx-auto"

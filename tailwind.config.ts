@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
 export default {
   darkMode: "class",
@@ -6,13 +6,13 @@ export default {
   theme: {
     extend: {
       screens: {
-        xs: '320px',
-        sm: '576px',
-        md: '640px',
-        lg: '768px',
-        xl: '922px',
-        xxl: '1024px',
-        xxxl: '1280px'
+        xs: "320px",
+        sm: "576px",
+        md: "640px",
+        lg: "768px",
+        xl: "922px",
+        xxl: "1024px",
+        xxxl: "1280px",
       },
     },
   },
