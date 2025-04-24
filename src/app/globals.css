@@ -20,6 +20,7 @@
 html.dark {
   background-color: var(--text);
   color: var(--background);
+  --icon: var(--alt);
 }
 
 html,

@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/_data/navlinks";
+import "@/_styles/navigation.css";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -22,8 +22,7 @@ export default function Navigation() {
       className={`
         z-50 flex flex-col gap-2 p-4
         w-1/4 mx-auto max-w-md justify-start
-        items-end absolute top-0
-        left-0
+        items-end absolute top-0 left-0
       `}
     >
       {navLinks
@@ -31,9 +30,6 @@ export default function Navigation() {
         .map(({ name, path, icon: Icon }) => {
           const isActive = pathname === path;
 
-          const Text = (
-            <span className="py-4 text-base md:text-lg">{name}</span>
-          );
           return (
             <div
               key={name}
@@ -46,15 +42,13 @@ export default function Navigation() {
                   group no-underline flex justify-between items-center
                 `}
               >
-                {Text}
+                <span className="py-4 text-base md:text-lg">{name}</span>
                 <Icon
                   size={32}
                   className={`
-                    ml-2 transition-color transition-opacity duration-500
-                    text-blue-950 dark:text-blue-50
-                    group-hover:text-red-200
-                    dark:group-hover:text-cyan-800
-                    opacity-0 group-hover:opacity-100
+                    phosphor-icon
+                    ml-2 opacity-0 group-hover:opacity-100
+                    transition-colors duration-300
                   `}
                 />
               </Link>

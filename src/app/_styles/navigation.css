@@ -1,0 +1,20 @@
+.phosphor-icon {
+  background-color: transparent;
+  color: var(--icon);
+}
+
+.dark svg.phosphor-icon {
+  color: var(--salmon);
+}
+
+svg.phosphor-icon {
+  color: var(--ocean);
+}
+
+.dark svg.phosphor-icon:hover {
+  color: var(--salmon);
+}
+
+svg.phosphor-icon:hover {
+  color: var(--ocean);
+}

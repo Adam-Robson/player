@@ -29,7 +29,7 @@ export default function AboutPage() {
         </div>
 
         <div className="h-1/2 flex flex-col justify-end items-center">
-          <p className="pt-4 mt-6 mb-2 font-medium">
+          <p className="pt-4 mt-6 mb-4 font-medium">
             Feel free to get in touch using the form below.
           </p>
           <ContactForm />

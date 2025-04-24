@@ -46,51 +46,48 @@ export function AudioProvider({
 
   const song: SongType = useMemo(() => playlist[currentIndex], [currentIndex]);
 
-  const initializeHowl = useCallback(
-    (songUrl: string): Howl => {
-      try {
-        const newSong = new Howl({
-          src: [songUrl],
-          html5: true,
-          preload: "metadata",
-          autoplay: false,
-          loop: false,
-          volume: volume,
-          onload: () => {
-            const durationSeconds = newSong.duration() as number;
-            setDuration(formatTime(durationSeconds));
-            setError(null);
-          },
-          onloaderror: (_id: number, error: unknown) => {
-            setError(`Failed to load audio: ${error}`);
-            console.error("Audio load error:", error);
-          },
-          onplayerror: (_id: number, error: unknown) => {
-            setError(`Failed to play audio: ${error}`);
-            console.error("Audio play error:", error);
-          },
-          onplay: () => setPlayback(true),
-          onpause: () => setPlayback(false),
-          onend: () => {
-            setPlayback(false);
-            setElapsed("00:00");
-            songRef.current?.stop();
-            handleNextSong();
-          },
-          onstop: () => {
-            setPlayback(false);
-            setElapsed("00:00");
-          },
-        });
-        return newSong;
-      } catch (error) {
-        setError(`Failed to initialize audio: ${error}`);
-        console.error("Howl initialization error:", error);
-        throw error;
-      }
-    },
-    [volume]
-  );
+  const initializeHowl = useCallback((songUrl: string): Howl => {
+    try {
+      const newSong = new Howl({
+        src: [songUrl],
+        html5: true,
+        preload: "metadata",
+        autoplay: false,
+        loop: false,
+        volume: volume,
+        onload: () => {
+          const durationSeconds = newSong.duration() as number;
+          setDuration(formatTime(durationSeconds));
+          setError(null);
+        },
+        onloaderror: (_id: number, error: unknown) => {
+          setError(`Failed to load audio: ${error}`);
+          console.error("Audio load error:", error);
+        },
+        onplayerror: (_id: number, error: unknown) => {
+          setError(`Failed to play audio: ${error}`);
+          console.error("Audio play error:", error);
+        },
+        onplay: () => setPlayback(true),
+        onpause: () => setPlayback(false),
+        onend: () => {
+          setPlayback(false);
+          setElapsed("00:00");
+          songRef.current?.stop();
+          handleNextSong();
+        },
+        onstop: () => {
+          setPlayback(false);
+          setElapsed("00:00");
+        },
+      });
+      return newSong;
+    } catch (error) {
+      setError(`Failed to initialize audio: ${error}`);
+      console.error("Howl initialization error:", error);
+      throw error;
+    }
+  }, []);
 
   const handleSongChange = useCallback(
     (newIndex: number) => {
@@ -136,7 +133,6 @@ export function AudioProvider({
   );
 
   const handlePlayback = useCallback(async () => {
-    // 1) If we don't yet have a Howl, initialize it now
     if (!songRef.current) {
       try {
         songRef.current = initializeHowl(song.url);
@@ -146,13 +142,11 @@ export function AudioProvider({
       }
     }
 
-    // 2) Resume audio context if needed
     try {
       if (Howler.ctx.state === "suspended") {
         await Howler.ctx.resume();
       }
 
-      // 3) Toggle play / pause
       if (songRef.current.playing()) {
         songRef.current.pause();
       } else {
@@ -183,7 +177,9 @@ export function AudioProvider({
     [volume, handleVolumeChange]
   );
 
-  const togglePlayer = () => setVisible((prev) => !prev);
+  const togglePlayer = useCallback(() => {
+    setVisible((prev) => !prev);
+  }, [setVisible]);
 
   useEffect(() => {
     if (volumeSliderRef?.current) {
