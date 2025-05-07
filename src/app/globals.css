@@ -1,26 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  --eerie: #333333ff;
-  --cobalt: #545c6bff;
-  --alice: #edf5fcff;
-  --bone: #d0eeeed6;
-  --taupe: #847474ff;
-  --salmon: #ffc9c9ff;
-  --ocean: #1d283aff;
+  --black: #000000ff;
+  --eerie: #1b1b1bff;
+  --night: #172121ff;
+  --charcoal: #444554ff;
+  --bole: #764134ff;
+  --chamoisee: #ad8350ff;
+  --cinerous: #816c61ff;
+  --taupe: #7f7b82ff;
+  --dim: #8f8f8fff;
+  --quartz: #bfacb5ff;
+  --khaki: #b7b3a1ff;
+  --sage: #d1ca98ff;
+  --dogwood: #e5d0ccff;
+  --pearl: #e7dfc6ff;
+  --latte: #f9f5e3ff;
+  --smoke: #f6f4f3ff;
 
-  --text: var(--eerie);
-  --background: var(--alice);
-  --primary: var(--cobalt);
-  --secondary: var(--bone);
-  --accent: var(--taupe);
-  --alt: var(--salmon);
+  --text: var(--night);
+  --background: var(--smoke);
+  --primary: var(--quartz);
+  --secondary: var(--pearl);
+  --accent: var(--dim);
+  --alt: var(--chamoisee);
 }
 
 html.dark {
   background-color: var(--text);
   color: var(--background);
-  --icon: var(--alt);
 }
 
 html,

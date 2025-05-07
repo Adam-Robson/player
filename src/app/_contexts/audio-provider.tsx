@@ -81,6 +81,7 @@ export function AudioProvider({
           setElapsed("00:00");
         },
       });
+
       return newSong;
     } catch (error) {
       setError(`Failed to initialize audio: ${error}`);
@@ -133,11 +134,19 @@ export function AudioProvider({
   );
 
   const handlePlayback = useCallback(async () => {
+    console.log("handlePlayback triggered");
+    console.log("Current song:", song);
+    console.log("songRef.current before:", songRef.current);
+
     if (!songRef.current) {
       try {
-        songRef.current = initializeHowl(song.url);
+        console.log("Initializing songRef with:", song.url);
+        const howl = initializeHowl(song.url);
+        if (!howl) throw new Error("initializeHowl returned undefined");
+        songRef.current = howl;
+        console.log("songRef.current initialized:", songRef.current);
       } catch (e) {
-        console.error("Failed to init audio:", e);
+        console.error("Failed to initialize Howl:", e);
         return;
       }
     }
