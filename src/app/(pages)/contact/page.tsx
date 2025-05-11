@@ -54,10 +54,12 @@ export default function ContactPage() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen max-w-2xl mx-auto flex items-center justify-center py-12 px-4">
-        <div className="w-full max-w-md space-y-6 p-8 rounded-2xl shadow-lg">
-          <h1 className="text-3xl font-regular text-center">Contact Le Fog</h1>
-
+      <div
+        className="flex flex-col justify-start items-center
+      w-full text-center p-2"
+      >
+        <h1 className="text-3xl font-light text-center">Contact Le Fog</h1>
+        <div className="w-full max-w-2xl space-y-6 p-8 rounded-2xl shadow-lg">
           {submitted ? (
             <div className="p-4 rounded">
               <p className="font-medium mb-2">Thank you!</p>
@@ -65,7 +67,7 @@ export default function ContactPage() {
             </div>
           ) : (
             <div>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4 text-left">
                 <div>
                   <label
                     htmlFor="firstName"

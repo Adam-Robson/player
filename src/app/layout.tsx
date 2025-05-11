@@ -40,7 +40,6 @@ export default function RootLayout({
           ${firaCode.variable} 
           ${firaMono.variable} 
           subpixel-antialiased
-          relative 
         `}
       >
         <Providers>

@@ -11,14 +11,10 @@ export default function HomeLayout() {
   const image = theme === "dark" ? "planetdark" : "planet";
 
   return (
-    <div
-      className={`
-      
-    `}
-    >
+    <>
       <Header />
       <HomeImage img={image} />
       <Footer />
-    </div>
+    </>
   );
 }

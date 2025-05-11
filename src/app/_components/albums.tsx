@@ -23,7 +23,7 @@ export default function Albums() {
   };
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center max-w-screen-lg mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center">
         {albums.map((album: CollectionType) => (
           <motion.div
             key={album.id}

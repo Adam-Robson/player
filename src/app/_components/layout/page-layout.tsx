@@ -11,16 +11,33 @@ type PageLayoutProps = {
 
 export default function PageLayout({ children }: PageLayoutProps) {
   return (
-    <div className="max-w-screen-lg mx-auto min-h-screen flex flex-col p-2 relative">
+    <div className="flex flex-col p-2">
       <header className="flex justify-between items-center px-6 py-4 w-full">
-        <Link href="/" className="">
-          <House size={32} />
-        </Link>
+        <button>
+          <Link
+            href="/"
+            className={`
+              toggle-theme
+              rounded focus:outline-none
+              text-sm p-2 z-50 cursor-pointer
+              absolute top-4 left-4
+            `}
+          >
+            <House size={32} />
+          </Link>
+        </button>
         <ThemeToggle />
       </header>
 
-      {/* Page Content */}
-      <main className="w-full h-full">{children}</main>
+      <main
+        className={`
+          flex flex-col justify-start
+          items-center w-full
+          text-center p-2
+        `}
+      >
+        {children}
+      </main>
     </div>
   );
 }
