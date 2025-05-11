@@ -1,7 +1,5 @@
 "use client";
-import { House } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import "@/_styles/about.css";
 import Image from "next/image";
 import PageLayout from "@/_components/layout/page-layout";

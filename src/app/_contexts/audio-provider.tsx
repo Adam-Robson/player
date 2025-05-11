@@ -46,51 +46,53 @@ export function AudioProvider({
 
   const song: SongType = useMemo(() => playlist[currentIndex], [currentIndex]);
 
-  const initializeHowl = useCallback((songUrl: string): Howl => {
-    try {
-      const newSong = new Howl({
-        src: [songUrl],
-        html5: true,
-        preload: "metadata",
-        autoplay: false,
-        loop: false,
-        volume: volume,
-        onload: () => {
-          const durationSeconds = newSong.duration() as number;
-          setDuration(formatTime(durationSeconds));
-          setError(null);
-        },
-        onloaderror: (_id: number, error: unknown) => {
-          setError(`Failed to load audio: ${error}`);
-          console.error("Audio load error:", error);
-        },
-        onplayerror: (_id: number, error: unknown) => {
-          setError(`Failed to play audio: ${error}`);
-          console.error("Audio play error:", error);
-        },
-        onplay: () => setPlayback(true),
-        onpause: () => setPlayback(false),
-        onend: () => {
-          setPlayback(false);
-          setElapsed("00:00");
-          songRef.current?.stop();
-          handleNextSong();
-        },
-        onstop: () => {
-          setPlayback(false);
-          setElapsed("00:00");
-        },
-      });
+  const initializeHowl = useCallback(
+    (songUrl: string): Howl => {
+      try {
+        const newSong = new Howl({
+          src: [songUrl],
+          html5: true,
+          preload: "metadata",
+          autoplay: false,
+          loop: false,
+          volume: volume,
+          onload: () => {
+            const durationSeconds = newSong.duration() as number;
+            setDuration(formatTime(durationSeconds));
+            setError(null);
+          },
+          onloaderror: (_id: number, error: unknown) => {
+            setError(`Failed to load audio: ${error}`);
+            console.error("Audio load error:", error);
+          },
+          onplayerror: (_id: number, error: unknown) => {
+            setError(`Failed to play audio: ${error}`);
+            console.error("Audio play error:", error);
+          },
+          onplay: () => setPlayback(true),
+          onpause: () => setPlayback(false),
+          onend: () => {
+            setPlayback(false);
+            setElapsed("00:00");
+            songRef.current?.stop();
+          },
+          onstop: () => {
+            setPlayback(false);
+            setElapsed("00:00");
+          },
+        });
 
-      return newSong;
-    } catch (error) {
-      setError(`Failed to initialize audio: ${error}`);
-      console.error("Howl initialization error:", error);
-      throw error;
-    }
-  }, []);
+        return newSong;
+      } catch (error) {
+        setError(`Failed to initialize audio: ${error}`);
+        console.error("Howl initialization error:", error);
+        throw error;
+      }
+    },
+    [volume]
+  );
 
-  const handleSongChange = useCallback(
+  const handleSongChange: (newIndex: number) => void = useCallback(
     (newIndex: number) => {
       if (newIndex < 0 || newIndex >= playlist.length) {
         setError("Invalid song index");
@@ -165,7 +167,7 @@ export function AudioProvider({
       setError(`Playback error: ${error}`);
       console.error("Play/Pause error:", error);
     }
-  }, [initializeHowl, song.url]);
+  }, [initializeHowl, song]);
 
   const handleNextSong = useCallback(() => {
     const nextIndex = currentIndex < playlist.length - 1 ? currentIndex + 1 : 0;

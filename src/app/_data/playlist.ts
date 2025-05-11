@@ -3,7 +3,7 @@ import type { SongType } from "@/_types/audio-provider";
 export const playlist: SongType[] = [
   {
     id: 0,
-    title: "Wear it Long",
+    title: "I Can't Not Wear My Face",
     album: "previously unreleased",
     artist: "lefog",
     url: "/audio/long.mp3",

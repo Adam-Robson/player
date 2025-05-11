@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import Albums from "@/_components/albums";
-import { House } from "@phosphor-icons/react";
 import PageLayout from "@/_components/layout/page-layout";
 
 export default function CollectionsPage() {
