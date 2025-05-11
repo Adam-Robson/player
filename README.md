@@ -1,11 +1,59 @@
-# player
+# Le Fog XYZ
 
-## notes
+This is the official website for **Le Fog**, a minimalist, responsive, and mobile-first web experience featuring an audio collection, about page, and functional contact form.
 
-1. the audio player backdrop blur does not appear in sync with the player's background. The player rises and then stops in its final location and only then does the backdrop blur out, on exit the blur disappears, and then the background begins to lower and shrink.
-2. the main logo needs to change
-3. the dark theme text remains the same color as when the site is in light mode including links and icons.
-4. the audio player background appears transparent without any color
-5. the navigation icons do not retain any color whatsoever
-6. the about page needs a lot of care: the contact form needs to be placed onto a contact page, and the about page Needs to have more descriptions and explanation of who le fog is, past present and future, as well as some detail regarding adam.
-7.
+## 📁 Project Structure
+
+.
+├── public/  
+├── src/  
+├── ├── app/  
+|       ├── _components/  
+|       ├── _contexts/  
+|       ├── _data/  
+|       ├── _styles/  
+|       ├── _types/  
+│       ├── (pages)/  
+|       ├── favicon.ico  
+|       ├── global.css  
+|       └── layout.tsx  
+├── .gitignore  
+├── eslint.config.mjs  
+├── package.json  
+├── pnpm-lock.yaml  
+├── postcss.config.mjs  
+├── README.md  
+├── tailwind.config.ts  
+└──  tsconfig.json  
+
+## 🚀 Deployment
+
+### Static Frontend
+
+1. Build the frontend with:
+
+```sh
+   pnpm build
+```
+
+(Generates `/out` folder via `output: 'export'`)
+
+The deployed project uses a Node Backend deployed through cPanel.
+
+## 💬 Contact Form
+
+- POSTs to `https://app.lefog.xyz/contact`
+- Saves contact in `contacts` table and message in `messages`
+- Sends confirmation email via configured SMTP
+
+## 🛠 Environment Variables
+
+Backend (`.env`):
+
+DB_HOST=localhost
+DB_USER=your_db_user
+DB_PASSWORD=your_db_pass
+DB_NAME=your_db_name
+SMTP_HOST=mail.yourdomain.com
+SMTP_USER=your_email
+SMTP_PASS=your_email_password
