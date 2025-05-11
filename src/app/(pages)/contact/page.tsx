@@ -26,23 +26,20 @@ export default function ContactPage() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/contact`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        }
-      );
+      const response = await fetch("https://app.lefog.xyz/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
       if (response.ok) {
-        // Assuming the API returns a success message
+        // assume API returns a success
         const data = await response.json();
         console.log("Success:", data);
-        // Optionally, you can reset the form or show a success message
+        // optionally reset the form or show a success message
         setSubmitted(true);
         setForm({ firstName: "", lastName: "", email: "", message: "" });
       } else {
-        // Handle error response
+        // handle error response
         const errorData = await response.json();
         console.error("Error:", errorData);
         setError("Failed to send message. Please try again.");
