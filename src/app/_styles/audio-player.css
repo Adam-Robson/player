@@ -8,20 +8,16 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: space-between;
-  flex: 1;
+  justify-content: space-between;
+  align-items: center;
   color: var(--text);
-  background-color: var(--secondary);
+  background-color: hsla(187, 27%, 68%, 0.8);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  flex: 1;
   will-change: backdrop-filter, opacity;
-}
-
-@media screen and (min-width: 500px) {
-  .audio-player {
-    max-width: 400px;
-    padding: 3rem;
-  }
 }
 
 .playlist {

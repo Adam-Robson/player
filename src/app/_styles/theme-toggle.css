@@ -1,5 +1,9 @@
+.toggle-theme {
+  color: var(--primary);
+}
+
 .toggle-theme:hover {
-  color: var(--salmon);
+  color: var(--hover);
   cursor: pointer;
   transform: scale(1.1);
   transition:

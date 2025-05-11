@@ -6,13 +6,14 @@ export type HomeImageType = {
 
 export default function HomeImage({ img }: { img: string }) {
   return (
-    <div className="absolute h-full w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <section className="relative w-full h-full overflow-hidden">
       <Image
-        src={`/images/logo/${img}.svg`}
+        src={`/images/logo/${img}.webp`}
         alt="light mode image"
-        fill
-        className="object-cover transition-opacity duration-500"
+        height={600}
+        width={600}
+        className="object-cover object-center mx-auto"
       />
-    </div>
+    </section>
   );
 }

@@ -41,7 +41,7 @@ export default function Albums() {
             />
             <motion.div
               variants={overlayVariants}
-              className="absolute inset-0 flex flex-col justify-center items-center bg-white/10 backdrop-blur-md"
+              className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 backdrop-blur-md"
             >
               <motion.span
                 variants={textVariants}

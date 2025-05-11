@@ -15,9 +15,9 @@ export default function ThemeToggle() {
       aria-label="Toggle Theme"
       className={`
         toggle-theme
-        absolute top-8 right-6
         rounded focus:outline-none
         text-sm p-2 z-50 cursor-pointer
+        absolute top-4 right-4
       `}
     >
       <motion.div

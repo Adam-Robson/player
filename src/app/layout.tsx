@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fira_Sans, Fira_Code, Fira_Mono } from "next/font/google";
 import Providers from "@/_components/providers";
-import PageWrapper from "@/_components/page-wrapper";
+import PageWrapper from "@/_components/layout/page-wrapper";
 import "./globals.css";
 
 const firaSans = Fira_Sans({
@@ -40,6 +40,7 @@ export default function RootLayout({
           ${firaCode.variable} 
           ${firaMono.variable} 
           subpixel-antialiased
+          relative 
         `}
       >
         <Providers>

@@ -1,34 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --black: #000000ff;
-  --eerie: #1b1b1bff;
   --night: #172121ff;
   --charcoal: #444554ff;
-  --bole: #764134ff;
   --chamoisee: #ad8350ff;
-  --cinerous: #816c61ff;
   --taupe: #7f7b82ff;
-  --dim: #8f8f8fff;
   --quartz: #bfacb5ff;
-  --khaki: #b7b3a1ff;
-  --sage: #d1ca98ff;
   --dogwood: #e5d0ccff;
-  --pearl: #e7dfc6ff;
-  --latte: #f9f5e3ff;
   --smoke: #f6f4f3ff;
+  --coral: #f4a4a4ff;
 
   --text: var(--night);
   --background: var(--smoke);
-  --primary: var(--quartz);
-  --secondary: var(--pearl);
-  --accent: var(--dim);
-  --alt: var(--chamoisee);
+  --primary: var(--charcoal);
+  --secondary: var(--taupe);
+  --accent: var(--quartz);
+  --hover: var(--coral);
 }
 
 html.dark {
-  background-color: var(--text);
-  color: var(--background);
+  --text: var(--smoke);
+  --background: var(--night);
+  --primary: var(--dogwood);
+  --secondary: var(--taupe);
+  --accent: var(--dogwood);
+  --hover: var(--coral);
+  background-color: var(--background);
+  color: var(--text);
 }
 
 html,
@@ -54,6 +52,8 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   z-index: -2;
+  background-color: var(--background);
+  color: var(--text);
 }
 
 *,
@@ -69,7 +69,6 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
-  background-color: transparent;
 }
 
 .root {
@@ -77,4 +76,32 @@ body {
   width: 100%;
   overflow-y: hidden;
   z-index: -1;
+}
+
+a {
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: var(--font-mono);
+}
+
+.navlink {
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.navlink:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
 }

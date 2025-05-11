@@ -1,18 +1,18 @@
-import type { SongType } from '@/_types/audio-provider';
+import type { SongType } from "@/_types/audio-provider";
 
 export const playlist: SongType[] = [
   {
     id: 0,
-    title: "They Call Her Lou",
-    album: "unreleased",
+    title: "Wear it Long",
+    album: "previously unreleased",
     artist: "lefog",
-    url: "/audio/lou.mp3",
-    duration: "02:35",
+    url: "/audio/long.mp3",
+    duration: "02:42",
   },
   {
     id: 1,
     title: "Draw From the Sleep Well",
-    album: "unreleased",
+    album: "previously unreleased",
     artist: "lefog",
     url: "/audio/well.mp3",
     duration: "03:45",

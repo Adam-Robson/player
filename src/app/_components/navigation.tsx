@@ -11,7 +11,7 @@ export default function Navigation() {
 
   const baseClasses = `
     flex justify-between items-center gap-2
-    p-4 text-xl font-medium rounded-md 
+    p-2 text-xl font-medium rounded-md 
   `;
 
   return (
@@ -38,11 +38,13 @@ export default function Navigation() {
               <Link
                 href={path}
                 className={`
-                  ${baseClasses} ${isActive ? "font-normal" : "font-light"}
+                  ${baseClasses} ${isActive ? "font-medium" : "font-light"}
                   group no-underline flex justify-between items-center
                 `}
               >
-                <span className="py-4 text-base md:text-lg">{name}</span>
+                <span className="py-4 navlink flex-1 tracking-tighter">
+                  {name}
+                </span>
                 <Icon
                   size={32}
                   className={`
