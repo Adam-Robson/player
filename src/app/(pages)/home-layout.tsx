@@ -8,7 +8,7 @@ import HomeImage from "@/_components/home-image";
 export default function HomeLayout() {
   const { theme } = useThemeProvider();
 
-  const image = theme === "dark" ? "planetdark" : "planet";
+  const image = theme === "dark" ? "main_white" : "main";
 
   return (
     <>

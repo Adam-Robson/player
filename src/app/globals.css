@@ -102,6 +102,20 @@ span {
 }
 
 .navlink:hover {
+  font-weight: 400;
   transform: scale(1.05);
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.3s ease-in-out font-weight 0.3 ease-in-out;
+}
+
+@keyframes rotateBackground {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-slowly {
+  animation: rotateBackground 180s linear infinite;
 }
