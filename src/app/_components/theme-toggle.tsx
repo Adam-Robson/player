@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import { useThemeProvider } from '@/_contexts/theme-provider';
-import {Sun, Sunglasses} from '@phosphor-icons/react';
-import { motion } from 'framer-motion';
+import { useThemeProvider } from "@/_contexts/theme-provider";
+import { Sun, Sunglasses } from "@phosphor-icons/react";
+import { motion } from "framer-motion";
+import "@/_styles/theme-toggle.css";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useThemeProvider();
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
 
   return (
-
     <button
       onClick={toggleTheme}
       aria-label="Toggle Theme"
       className={`
-        absolute top-8 right-6
+        toggle-theme
         rounded focus:outline-none
-        focus:ring-2 focus:ring-offset-2
         text-sm p-2 z-50 cursor-pointer
+        absolute top-4 right-4
       `}
     >
       <motion.div
@@ -29,5 +29,4 @@ export default function ThemeToggle() {
       </motion.div>
     </button>
   );
-};
-
+}

@@ -1,40 +1,58 @@
 "use client";
-
-import Link from "next/link";
-import ContactForm from "@/_components/contact-form";
-import { House } from "@phosphor-icons/react";
+import { motion } from "framer-motion";
+import "@/_styles/about.css";
+import Image from "next/image";
+import PageLayout from "@/_components/layout/page-layout";
 
 export default function AboutPage() {
   return (
-    <main
-      className={`
-        relative max-w-screen-lg mx-auto
-        h-screen px-4 py-8 flex flex-col
-        justify-between items-center
-        w-full text-center container
-      `}
-    >
-      <div className="absolute top-4 left-4">
-        <Link href="/">
-          <House />
-        </Link>
-      </div>
-      <div className="relative max-w-screen-md mx-auto w-full h-screen">
-        <h1 className="text-center text-2xl font-medium mb-6">About</h1>
-        <div className="container text-base font-normal max-w-md mx-auto p-4 mb-4 w-full">
-          Le Fog is an independent music project founded in 2020 by Adam Robson
-          that combines raw recording techniques, aphoristic lyrics, electrified
-          rock, contemporary folk, and electronic music. Made with dust in
-          Portland, Oregon.
-        </div>
+    <PageLayout>
+      <div
+        className={`
+      flex flex-col justify-start items-center
+      w-full text-center
+      p-2
+    `}
+      >
+        <h1 className="title text-4xl font-light leading-tight mb-20">
+          About Le Fog
+        </h1>
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+        >
+          <div className="w-full">
+            <Image
+              src="/images/roaddogs.jpg"
+              alt="Portrait or relevant graphic"
+              width={400}
+              height={200}
+              className="rounded-2xl shadow-lg w-full object-cover dark:grayscale"
+            />
+          </div>
 
-        <div className="h-1/2 flex flex-col justify-end items-center">
-          <p className="pt-4 mt-6 mb-2 font-medium">
-            Feel free to get in touch using the form below.
-          </p>
-          <ContactForm />
-        </div>
+          <div className="space-y-6">
+            <p className="text leading-relaxed subpixel-antialiased">
+              Le Fog is a music project - created by Adam Robson - blending
+              poetic songwriting, minimalist production, and immersive
+              soundscapes.
+            </p>
+            <hr className="max-w-60 mx-auto" />
+            <p className="text leading-relaxed subpixel-antialiased">
+              The mission is to create honest, frictionless sound environments
+              that elevate mood, deepen introspection, and evoke atmosphere.
+            </p>
+            <hr className="max-w-60 mx-auto" />
+            <p className="text leading-relaxed subpixel-antialiased">
+              Since 2020, Adam Robson has handled all conceptual design,
+              recording, production, and distribution under the Le Fog name,
+              releasing four albums to date.
+            </p>
+          </div>
+        </motion.section>
       </div>
-    </main>
+    </PageLayout>
   );
 }

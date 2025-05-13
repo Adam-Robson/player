@@ -1,9 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { ContactType } from "@/_types/about-page";
 import "@/_styles/contact-form.css";
+
 export default function ContactForm() {
+  const router = useRouter();
+
   const [form, setForm] = useState<ContactType>({
     email: "",
     firstname: "",
@@ -11,87 +15,88 @@ export default function ContactForm() {
     message: "",
   });
 
-  function handleChange(
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
+  ) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
-  async function handleSubmit(e: React.FormEvent) {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError(null);
 
-    await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
-    setForm({
-      email: "",
-      firstname: "",
-      lastname: "",
-      message: "",
-    });
-  }
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        router.push("/"); // ✅ successful submission
+      } else {
+        setError("Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred.");
+      console.error("Error submitting contact form:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <div className="container max-w-xs flex flex-col justify-end">
+    <div className="container max-w-md mx-auto p-4">
       <form
-        action="/api/contact"
-        className="flex flex-col justify-center items-center max-w-md w-full mx-auto"
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 p-6 rounded shadow"
       >
-        <span className="w-full flex justify-between items-center p-2">
-          <label htmlFor="email" className="form-label">
-            email
-          </label>
-          <input
-            type="email"
-            id="email"
-            className="form-input email"
-            onChange={handleChange}
-          />
-        </span>
-
-        <span className="w-full flex justify-between items-center p-2">
-          <label htmlFor="firstname" className="form-label">
-            first name
-          </label>
-          <input
-            type="text"
-            id="firstname"
-            className="form-input firstname"
-            onChange={handleChange}
-          />
-        </span>
-
-        <span className="w-full flex justify-between items-center p-2">
-          <label htmlFor="lastname" className="form-label">
-            last name
-          </label>
-          <input
-            type="text"
-            id="lastname"
-            className="form-input lastname"
-            onChange={handleChange}
-          />
-        </span>
-
-        <span className="w-full flex justify-between items-center p-2">
-          <label htmlFor="message" className="form-label">
-            message
-          </label>
-          <textarea
-            name="message"
-            id="message"
-            className="form-input message"
-            onChange={handleChange}
-          />
-        </span>
-
-        <button className="submit" onSubmit={handleSubmit}>
-          submit
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          value={form.email}
+          onChange={handleChange}
+          className="input"
+        />
+        <input
+          type="text"
+          name="firstname"
+          placeholder="First Name"
+          required
+          value={form.firstname}
+          onChange={handleChange}
+          className="input"
+        />
+        <input
+          type="text"
+          name="lastname"
+          placeholder="Last Name"
+          required
+          value={form.lastname}
+          onChange={handleChange}
+          className="input"
+        />
+        <textarea
+          name="message"
+          placeholder="Message"
+          required
+          value={form.message}
+          onChange={handleChange}
+          className="textarea"
+        />
+        <button type="submit" className="btn" disabled={isLoading}>
+          {isLoading ? "Sending..." : "Send"}
         </button>
+        {error && <p className="text-red-500 text-sm">{error}</p>}
       </form>
     </div>
   );

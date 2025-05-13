@@ -10,7 +10,7 @@ export default function AudioPlayer() {
   const { song, playback, elapsed, duration, togglePlayer } = useAudioContext();
 
   return (
-    <div className="audio-player border-2 border-cyan-50 p-4 rounded-lg">
+    <div className="audio-player border-2 border-cyan-50 rounded-lg">
       <div className="border-2 border-cyan-50 rounded-lg p-2">
         <button
           className="absolute right-5 top-5 cursor-pointer z-50"

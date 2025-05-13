@@ -1,28 +1,29 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useState } from 'react';
-import { collections as albums } from '@/_data/collections';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CollectionType, SongType } from '@/_types/audio-provider';
-import { X } from '@phosphor-icons/react';
+import Image from "next/image";
+import { useState } from "react";
+import { collections as albums } from "@/_data/collections";
+import { motion, AnimatePresence } from "framer-motion";
+import { CollectionType, SongType } from "@/_types/audio-provider";
+import { X } from "@phosphor-icons/react";
 
 export default function Albums() {
-  const [selectedAlbum, setSelectedAlbum] = useState<CollectionType | null>(null);
+  const [selectedAlbum, setSelectedAlbum] = useState<CollectionType | null>(
+    null
+  );
 
   const overlayVariants = {
     initial: { opacity: 0 },
     hover: { opacity: 1 },
   };
-  
+
   const textVariants = {
     initial: { y: 10, opacity: 0 },
     hover: { y: 0, opacity: 1 },
   };
   return (
-
-  <>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center max-w-screen-lg mx-auto">
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center">
         {albums.map((album: CollectionType) => (
           <motion.div
             key={album.id}
@@ -40,7 +41,7 @@ export default function Albums() {
             />
             <motion.div
               variants={overlayVariants}
-              className="absolute inset-0 flex flex-col justify-center items-center bg-white/10 backdrop-blur-md"
+              className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 backdrop-blur-md"
             >
               <motion.span
                 variants={textVariants}
@@ -52,7 +53,8 @@ export default function Albums() {
                 variants={textVariants}
                 className="text-blue-50 text-sm font-normal text-center px-2"
               >
-                <p className="italic">released: </p>{album.releaseDate}
+                <p className="italic">released: </p>
+                {album.releaseDate}
               </motion.span>
             </motion.div>
           </motion.div>
@@ -65,7 +67,7 @@ export default function Albums() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs bg-opacity-75 flex items-center justify-center p-4 z-50"
             onClick={() => setSelectedAlbum(null)}
           >
             <motion.div
@@ -75,23 +77,26 @@ export default function Albums() {
               className="bg-blue-50 p-6 rounded-lg max-w-lg w-full overflow-auto max-h-[80vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              <h2 className="text-2xl font-medium mb-4">{selectedAlbum.title}</h2>
+              <h2 className="text-2xl font-medium mb-4">
+                {selectedAlbum.title}
+              </h2>
               <ul className="list-decimal pl-6 space-y-1">
                 {selectedAlbum.tracks.map((track: SongType, index: number) => (
-                  <li key={index} className="text-base/5">{track.title}</li>
+                  <li key={index} className="text-base/5">
+                    {track.title}
+                  </li>
                 ))}
               </ul>
               <button
-                className="mt-4 px-4 py-2 rounded"
+                className="mt-4 px-4 py-2 rounded cursor-pointer"
                 onClick={() => setSelectedAlbum(null)}
               >
-               <X />
+                <X />
               </button>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-      </>
+    </>
   );
-
 }

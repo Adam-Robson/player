@@ -75,13 +75,13 @@ export function AudioProvider({
             setPlayback(false);
             setElapsed("00:00");
             songRef.current?.stop();
-            handleNextSong();
           },
           onstop: () => {
             setPlayback(false);
             setElapsed("00:00");
           },
         });
+
         return newSong;
       } catch (error) {
         setError(`Failed to initialize audio: ${error}`);
@@ -92,7 +92,7 @@ export function AudioProvider({
     [volume]
   );
 
-  const handleSongChange = useCallback(
+  const handleSongChange: (newIndex: number) => void = useCallback(
     (newIndex: number) => {
       if (newIndex < 0 || newIndex >= playlist.length) {
         setError("Invalid song index");
@@ -136,23 +136,28 @@ export function AudioProvider({
   );
 
   const handlePlayback = useCallback(async () => {
-    // 1) If we don't yet have a Howl, initialize it now
+    console.log("handlePlayback triggered");
+    console.log("Current song:", song);
+    console.log("songRef.current before:", songRef.current);
+
     if (!songRef.current) {
       try {
-        songRef.current = initializeHowl(song.url);
+        console.log("Initializing songRef with:", song.url);
+        const howl = initializeHowl(song.url);
+        if (!howl) throw new Error("initializeHowl returned undefined");
+        songRef.current = howl;
+        console.log("songRef.current initialized:", songRef.current);
       } catch (e) {
-        console.error("Failed to init audio:", e);
+        console.error("Failed to initialize Howl:", e);
         return;
       }
     }
 
-    // 2) Resume audio context if needed
     try {
       if (Howler.ctx.state === "suspended") {
         await Howler.ctx.resume();
       }
 
-      // 3) Toggle play / pause
       if (songRef.current.playing()) {
         songRef.current.pause();
       } else {
@@ -162,7 +167,7 @@ export function AudioProvider({
       setError(`Playback error: ${error}`);
       console.error("Play/Pause error:", error);
     }
-  }, [initializeHowl, song.url]);
+  }, [initializeHowl, song]);
 
   const handleNextSong = useCallback(() => {
     const nextIndex = currentIndex < playlist.length - 1 ? currentIndex + 1 : 0;
@@ -183,7 +188,9 @@ export function AudioProvider({
     [volume, handleVolumeChange]
   );
 
-  const togglePlayer = () => setVisible((prev) => !prev);
+  const togglePlayer = useCallback(() => {
+    setVisible((prev) => !prev);
+  }, [setVisible]);
 
   useEffect(() => {
     if (volumeSliderRef?.current) {

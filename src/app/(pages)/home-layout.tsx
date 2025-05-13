@@ -8,18 +8,13 @@ import HomeImage from "@/_components/home-image";
 export default function HomeLayout() {
   const { theme } = useThemeProvider();
 
-  const image = theme === "dark" ? "lefog_dark" : "lefog_light";
+  const image = theme === "dark" ? "main_white" : "main";
 
   return (
-    <div
-      className={`
-      relative h-full max-w-screen-lg w-full mx-auto
-      flex flex-col justify-between items-center z-0
-    `}
-    >
+    <>
       <Header />
       <HomeImage img={image} />
       <Footer />
-    </div>
+    </>
   );
 }

@@ -1,38 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Le Fog XYZ
 
-## Getting Started
+This is the official website for **Le Fog**, a minimalist, responsive, and mobile-first web experience featuring an audio collection, about page, and functional contact form.
 
-First, run the development server:
+## 📁 Project Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+.
+├── public/  
+├── src/  
+├── ├── app/  
+|       ├── _components/  
+|       ├── _contexts/  
+|       ├── _data/  
+|       ├── _styles/  
+|       ├── _types/  
+│       ├── (pages)/  
+|       ├── favicon.ico  
+|       ├── global.css  
+|       └── layout.tsx  
+├── .gitignore  
+├── eslint.config.mjs  
+├── package.json  
+├── pnpm-lock.yaml  
+├── postcss.config.mjs  
+├── README.md  
+├── tailwind.config.ts  
+└──  tsconfig.json  
+
+## 🚀 Deployment
+
+### Static Frontend
+
+1. Build the frontend with:
+
+```sh
+   pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+(Generates `/out` folder via `output: 'export'`)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The deployed project uses a Node Backend deployed through cPanel.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 💬 Contact Form
 
-## Learn More
+- POSTs to `https://app.lefog.xyz/contact`
+- Saves contact in `contacts` table and message in `messages`
+- Sends confirmation email via configured SMTP
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠 Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Backend (`.env`):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# player
-# player
+DB_HOST=localhost
+DB_USER=your_db_user
+DB_PASSWORD=your_db_pass
+DB_NAME=your_db_name
+SMTP_HOST=mail.yourdomain.com
+SMTP_USER=your_email
+SMTP_PASS=your_email_password
